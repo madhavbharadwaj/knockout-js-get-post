@@ -1,0 +1,61 @@
+<body>
+	<form data-bind="submit: addTrainer">
+	
+		<input data-bind="value: newTrainerUName" placeholder="username" /> 
+		<input data-bind="value: newTrainerFName" placeholder="fname" />
+		<input data-bind="value: newTrainerPhone" placeholder="phone" /> 
+		<input data-bind="value: newTrainerEmail" placeholder="email" />
+		<input type ='password' data-bind="value: newTrainerPassword" placeholder="password" />
+
+	    <button type="submit">Add</button>
+	</form>
+	<ul data-bind="foreach: trainer">
+		<li>
+			<span data-bind="text:username"></span> 
+			<span data-bind="text:f_name"></span>
+			<span data-bind="text:phone"></span> 
+			<span data-bind="text:email"></span>
+			<span data-bind="text:password"></span>
+			
+			<input data-bind="visible: editable, value: username, valueUpdate: 'keypress'" />
+			<input data-bind="visible: editable, value: f_name, valueUpdate: 'keypress'" />
+			<input data-bind="visible: editable, value: phone, valueUpdate: 'keypress'" />
+			<input data-bind="visible: editable, value: email, valueUpdate: 'keypress'" />
+			<input data-bind="visible: editable, value: password, valueUpdate: 'keypress'" />
+
+			<a href="#" data-bind="visible: editable, click: $parent.updateTrainer">Save Edits</a>
+			<input type="checkbox" value="edit" data-bind="checked:editable">Make Edits</input>
+			<a href="#" data-bind="click: $parent.removeTrainer">Delete</a>
+		</li>
+		
+	</ul>
+	
+	<!--
+	<button id="action-button">GET</button>
+	-->
+
+	<table id="grid1" border="1">
+		<thead>
+			
+			<tr>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Middle Name</th>
+				<th>Last Name</th>
+				<th>Phone Number</th>
+				<th>Creation Time</th>
+				<th>Last Login Time</th>
+			</tr>
+		
+		</thead>               
+		<tbody>
+		</tbody>
+	</table>
+
+	<pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js"></script>
+	<script src="js/api.js"></script>
+	
+</body>
