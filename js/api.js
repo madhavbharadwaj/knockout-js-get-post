@@ -24,7 +24,7 @@ function viewModel(){
     //Load the initial data
     $.ajax({
         type: 'GET',
-        url: 'https://protected-plateau-97422.herokuapp.com/trainer',
+        url: 'https://bms-icl-yoga.herokuapp.com/trainer',
         success: function(data) {
          // patient = [{"username":"usn","f_name":"mad","phone":"9845","email":"test@gmail.com","password":"123","id":1}];
          for (var i=0;i<data.count;i++)
@@ -41,7 +41,7 @@ function viewModel(){
          }
          
 
-            $.getJSON("https://protected-plateau-97422.herokuapp.com/trainer", function (data) {
+            $.getJSON("https://bms-icl-yoga.herokuapp.com/trainer", function (data) {
       //console.log(data);
       var counter = 0;
   });        
@@ -55,7 +55,7 @@ function viewModel(){
         $.ajax({
           type: 'POST',
          
-         url: 'https://protected-plateau-97422.herokuapp.com/trainer/signup',
+         url: 'https://bms-icl-yoga.herokuapp.com/trainer/signup',
 
           data: ko.toJS(new TrainerClass({ _id: this.newTrainerID(),username: this.newTrainerUName(), f_name:  this.newTrainerFName(),phone:  this.newTrainerPhone(),email:  this.newTrainerEmail(),password:  this.newTrainerPassword()})),
           success: function(data) {
@@ -83,7 +83,7 @@ function viewModel(){
 
     self.deleteTrainer = function(trainer) {
 
-        var deletionString = 'https://protected-plateau-97422.herokuapp.com/trainer/' + trainer._id();
+        var deletionString = 'https://bms-icl-yoga.herokuapp.com/trainer/' + trainer._id();
         console.log(deletionString);
         $.ajax({
           type: 'DELETE',
@@ -98,8 +98,10 @@ function viewModel(){
   self.updateTrainer = function(trainer) {
     //alert(1);
     //var x = data.trainer[i].trainer_details.username
-    var updateString = 'https://protected-plateau-97422.herokuapp.com/trainer/id/' + trainer._id();
+    var updateString = 'https://bms-icl-yoga.herokuapp.com/trainer/id/' + trainer._id();
    // console.log(this.name());
+   alert(this._id());
+   //alert(this.email());
     $.ajax({
     type: 'PUT',
     //data: ko.toJS(new TrainerClass({ f_name: "maddy",phone:"123"})),
